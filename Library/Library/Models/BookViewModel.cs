@@ -8,11 +8,11 @@ namespace Library.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 10)]
+        [StringLength(TitleLength, MinimumLength = TitleMinLength)]
         public string Title { get; set; } = null!;
 
         [Required]
-        [StringLength(50, MinimumLength = 5)]
+        [StringLength(AuthorMaxLength, MinimumLength = AuthorMinLength)]
         public string Author { get; set; } = null!;
 
         [Required]
@@ -23,8 +23,9 @@ namespace Library.Models
         public decimal Rating { get; set; }
 
         [Required]
-        [StringLength(5000, MinimumLength = 5)]
+        [StringLength(DescriptionMaxLength, MinimumLength = DescriptionMinLength)]
         public string Description { get; set; } = null!;
+
 
         [Range(1, int.MaxValue)]
         public int CategoryId { get; set; }
