@@ -14,6 +14,8 @@ namespace Library.Data
         public DbSet<Book> Books { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
 
+        public DbSet<IdentityUserBook> IdentityUserBook { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder

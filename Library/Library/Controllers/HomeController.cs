@@ -1,6 +1,7 @@
 ﻿using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Library.Controllers
 {
@@ -8,6 +9,11 @@ namespace Library.Controllers
     {
         public IActionResult Index()
         {
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (user != null)
+            {
+                return RedirectToAction("All", "Book");
+            }
             return View();
         }
 
