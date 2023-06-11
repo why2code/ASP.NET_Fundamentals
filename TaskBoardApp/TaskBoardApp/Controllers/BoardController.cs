@@ -12,7 +12,7 @@ namespace TaskBoardApp.Controllers
         private readonly IBoardService boardService;
 
        
-        public BoardController(IBoardService boardService, ILogger<BoardController> logger)
+        public BoardController(IBoardService boardService)
         {
             this.boardService = boardService;
 

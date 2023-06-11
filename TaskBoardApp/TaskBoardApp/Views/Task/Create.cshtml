@@ -1,13 +1,13 @@
-﻿@*@model TaskFormModel*@
+﻿@model TaskFormModel
 
 @{
-    //ViewBag.Title = "Add Task";
+    ViewBag.Title = "Add Task";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-@*<div class="row">
+<div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form asp-action="Create" method="post">
             <div class="mb-3">
@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label asp-for="BoardId" class="form-label">Category</label>
                 <select asp-for="BoardId" class="form-control">
-                    @foreach (var board in Model.AllBoards)
+                    @foreach (var board in Model.Boards)
                     {
                         <option value="@board.Id">@board.Name</option>
                     }
@@ -36,7 +36,7 @@
         </form>
     </div>
 </div>
-*@
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
