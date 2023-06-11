@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoardApp.Services", "Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoardApp.Data", "TaskBoardApp.Data\TaskBoardApp.Data.csproj", "{7C544DE4-04E2-40D7-860F-4D29FBC3982C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoardApp.Common", "TaskBoardApp.Common\TaskBoardApp.Common.csproj", "{DA82915E-2389-447C-9E31-D131FA7B4A51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7C544DE4-04E2-40D7-860F-4D29FBC3982C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C544DE4-04E2-40D7-860F-4D29FBC3982C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C544DE4-04E2-40D7-860F-4D29FBC3982C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA82915E-2389-447C-9E31-D131FA7B4A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA82915E-2389-447C-9E31-D131FA7B4A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA82915E-2389-447C-9E31-D131FA7B4A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA82915E-2389-447C-9E31-D131FA7B4A51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

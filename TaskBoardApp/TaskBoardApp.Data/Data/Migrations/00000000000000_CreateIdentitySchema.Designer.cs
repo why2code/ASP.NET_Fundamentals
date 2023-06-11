@@ -8,7 +8,7 @@ using System;
 using TaskBoardApp.Data;
 using TaskBoardApp.Data.Data;
 
-namespace TaskBoardApp.Data.Migrations
+namespace TaskBoardApp.Data.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]

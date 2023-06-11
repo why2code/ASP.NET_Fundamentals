@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Models\" />
+    <ProjectReference Include="..\TaskBoardApp.Common\TaskBoardApp.Common.csproj" />
   </ItemGroup>
 
 </Project>

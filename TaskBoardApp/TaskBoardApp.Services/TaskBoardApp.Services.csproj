@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaskBoardApp.Common\TaskBoardApp.Common.csproj" />
     <ProjectReference Include="..\TaskBoardApp.Data\TaskBoardApp.Data.csproj" />
   </ItemGroup>
 

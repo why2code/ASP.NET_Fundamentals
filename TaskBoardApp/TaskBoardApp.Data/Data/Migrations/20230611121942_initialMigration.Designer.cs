@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskBoardApp.Data.Data;
 
 #nullable disable
 
-namespace TaskBoardApp.Data.Migrations
+namespace TaskBoardApp.Data.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230611121942_initialMigration")]
+    partial class initialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,117 +226,6 @@ namespace TaskBoardApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TaskBoardApp.Data.Data.Models.Board", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Boards");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Open"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "In Progress"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Done"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Closed"
-                        });
-                });
-
-            modelBuilder.Entity("TaskBoardApp.Data.Data.Models.Task", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BoardId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OwnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BoardId");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Tasks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("b0885333-0636-47c5-b60f-e44c3a75b798"),
-                            BoardId = 1,
-                            CreatedOn = new DateTime(2022, 11, 23, 13, 17, 12, 220, DateTimeKind.Utc).AddTicks(9734),
-                            Description = "Improve CSS styles of the application",
-                            OwnerId = "ce27f01b-ac6c-4962-915a-fe92495d85ec",
-                            Title = "Improve CSS styles"
-                        },
-                        new
-                        {
-                            Id = new Guid("3d6c182e-cbe0-4670-b2a9-dd89594a2d46"),
-                            BoardId = 2,
-                            CreatedOn = new DateTime(2023, 2, 1, 13, 17, 12, 220, DateTimeKind.Utc).AddTicks(9767),
-                            Description = "This is so complicated man",
-                            OwnerId = "d85e761e-20a2-49fd-bd47-fb31436f4f0a",
-                            Title = "What is HTML?"
-                        },
-                        new
-                        {
-                            Id = new Guid("7a7f24e7-51cd-4a77-b1de-6f5fff820fdf"),
-                            BoardId = 3,
-                            CreatedOn = new DateTime(2023, 6, 6, 13, 17, 12, 220, DateTimeKind.Utc).AddTicks(9769),
-                            Description = "I will learn this thing someday...",
-                            OwnerId = "ce27f01b-ac6c-4962-915a-fe92495d85ec",
-                            Title = "MVC is LITT"
-                        },
-                        new
-                        {
-                            Id = new Guid("723e45fd-9358-4b03-ba16-6c3fb6107b30"),
-                            BoardId = 4,
-                            CreatedOn = new DateTime(2023, 4, 7, 13, 17, 12, 220, DateTimeKind.Utc).AddTicks(9771),
-                            Description = "Chickens already sleeping",
-                            OwnerId = "d85e761e-20a2-49fd-bd47-fb31436f4f0a",
-                            Title = "Time to sleep soon!"
-                        });
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -384,30 +275,6 @@ namespace TaskBoardApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TaskBoardApp.Data.Data.Models.Task", b =>
-                {
-                    b.HasOne("TaskBoardApp.Data.Data.Models.Board", "Board")
-                        .WithMany("Tasks")
-                        .HasForeignKey("BoardId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Board");
-
-                    b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("TaskBoardApp.Data.Data.Models.Board", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }
