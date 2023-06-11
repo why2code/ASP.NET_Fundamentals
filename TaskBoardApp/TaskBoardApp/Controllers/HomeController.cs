@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using TaskBoardApp.Models;
 
-namespace TaskBoardApp.Services.Controllers
+namespace TaskBoardApp.Controllers
 {
     public class HomeController : Controller
     {
@@ -19,11 +18,7 @@ namespace TaskBoardApp.Services.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+      
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

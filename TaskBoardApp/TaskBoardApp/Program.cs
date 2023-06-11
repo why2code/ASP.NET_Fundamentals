@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskBoardApp.Data.Data;
+using TaskBoardApp.Services.Contracts;
+using TaskBoardApp.Services.Services;
 
 namespace TaskBoardApp
 {
@@ -27,6 +29,8 @@ namespace TaskBoardApp
                 opts.Password.RequireUppercase = false;
                 opts.Password.RequireNonAlphanumeric= false;
             });
+
+            builder.Services.AddScoped<IBoardService, BoardService>();
 
             var app = builder.Build();
 

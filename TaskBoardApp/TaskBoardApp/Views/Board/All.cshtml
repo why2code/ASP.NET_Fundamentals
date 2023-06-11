@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<BoardAllViewModel>*@
+﻿@model IEnumerable<BoardViewModel>
 
 @{
     ViewData["Title"] = "Task Board";
@@ -25,7 +25,7 @@ else
                     @if (board.Tasks.Any())
                     {
                         <div class="row  d-flex justify-content-center">
-                            @*@await Html.PartialAsync("~/Views/Shared/_TaskPartial.cshtml", board.Tasks)*@
+                            @await Html.PartialAsync("~/Views/Shared/_TaskPartial.cshtml", board.Tasks)
                         </div>
                     }
                 </div>
