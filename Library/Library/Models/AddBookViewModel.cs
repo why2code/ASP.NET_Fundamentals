@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Library.Data.Models;
 using static Library.Common.OnModelConfigurationSettings.Book;
 
 namespace Library.Models
 {
-    public class BookViewModel
+    public class AddBookViewModel
     {
         public int Id { get; set; }
 
@@ -32,6 +31,6 @@ namespace Library.Models
         [Range(1, int.MaxValue)]
         public int CategoryId { get; set; }
 
-        public IEnumerable<Category> Categories { get; set; } = new List<Category>();
+        public IEnumerable<CategoryViewModel> Categories { get; set; } = new List<CategoryViewModel>();
     }
 }

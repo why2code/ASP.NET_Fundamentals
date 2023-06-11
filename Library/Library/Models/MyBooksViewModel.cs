@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Library.Data.Models;
 using static Library.Common.OnModelConfigurationSettings.Book;
 
 namespace Library.Models
 {
-    public class BookViewModel
+    public class MyBooksViewModel
     {
         public int Id { get; set; }
 
@@ -17,21 +16,15 @@ namespace Library.Models
         public string Author { get; set; } = null!;
 
         [Required]
-        [MinLength(5)]
-        public string ImageUrl { get; set; } = null!;
-
-        [Required]
-        [Range(RatingMinValue, RatingMaxValue)]
-        public decimal Rating { get; set; }
-
-        [Required]
-        [StringLength(DescriptionMaxLength, MinimumLength = DescriptionMinLength)]
+        [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; } = null!;
 
+        [Required] 
+        public string Category { get; set; } = null!;
 
-        [Range(1, int.MaxValue)]
-        public int CategoryId { get; set; }
+        [Required]
+        public string ImageUrl { get; set; } = null!;
 
-        public IEnumerable<Category> Categories { get; set; } = new List<Category>();
-    }
+   
+   }
 }

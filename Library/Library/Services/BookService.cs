@@ -64,5 +64,72 @@ namespace Library.Services
                     CategoryId = b.CategoryId
                 }).FirstOrDefaultAsync();
         }
+
+        public async Task<IEnumerable<MyBooksViewModel>> GetMyBooksAsync(string userId)
+        {
+            var myBooks = await dbContext
+                .IdentityUserBook
+                .Where(ub => ub.Collector.Id == userId)
+                .Select(ub => new MyBooksViewModel
+                {
+                    Id = ub.Book.Id,
+                    Title = ub.Book.Title,
+                    Author = ub.Book.Author,
+                    ImageUrl = ub.Book.ImageUrl,
+                    Description = ub.Book.Description,
+                    Category = ub.Book.Category.Name
+                }).ToListAsync();
+
+            return myBooks;
+        }
+
+        public async Task RemoveBookFromCollectionAsync(string userId, BookViewModel book)
+        {
+            var bookToRemove = await dbContext
+                .IdentityUserBook
+                .FirstOrDefaultAsync(ub => ub.CollectorId == userId && ub.BookId == book.Id);
+                
+
+            if (bookToRemove != null)
+            {
+                dbContext.IdentityUserBook.Remove(bookToRemove);
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<AddBookViewModel> GetNewBookModelToAddAsync()
+        {
+            var bookCategories = await dbContext
+                .Categories
+                .Select(c => new CategoryViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                }).ToListAsync();
+
+            var model = new AddBookViewModel
+            {
+                Categories = bookCategories
+            };
+
+            return model;
+        }
+
+        public async Task AddBookAsync(AddBookViewModel model)
+        {
+            Book book = new Book
+            {
+                Title = model.Title,
+                Author = model.Author,
+                ImageUrl = model.ImageUrl,
+                Description = model.Description,
+                CategoryId = model.CategoryId,
+                Rating = model.Rating
+            };
+
+            await dbContext.Books.AddAsync(book);
+            await dbContext.SaveChangesAsync();
+
+        }
     }
 }

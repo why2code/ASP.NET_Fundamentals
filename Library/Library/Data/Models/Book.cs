@@ -40,7 +40,7 @@ namespace Library.Data.Models
         [Required]
         public Category Category { get; set; } = null!;
 
-        public IEnumerable<IdentityUserBook> UsersBooks { get; set; }
+        public ICollection<IdentityUserBook> UsersBooks { get; set; }
     }
 }
 
