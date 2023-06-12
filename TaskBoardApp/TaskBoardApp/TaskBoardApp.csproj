@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Board\" />
-    <Folder Include="Views\Task\" />
   </ItemGroup>
 
 </Project>

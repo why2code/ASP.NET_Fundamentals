@@ -51,5 +51,50 @@ namespace TaskBoardApp.Controllers
 
             return RedirectToAction("All", "Board");
         }
+
+        public async Task<IActionResult> Details(string id)
+        {
+            TaskDetailsViewModel taskDetails = await taskService.GetTaskDetails(id);
+
+            return View(taskDetails);
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            TaskFormModel taskEditFormModel = await taskService.GetTaskForEdit(id);
+           
+            return View(taskEditFormModel);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, TaskFormModel taskModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(taskModel);
+            }
+
+            await taskService.EditTask(taskModel, id);
+
+            return RedirectToAction("All", "Board");
+        }
+
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            TaskFormModel taskDeleteFormModel = await taskService.GetTaskForEdit(id);
+            return View(taskDeleteFormModel);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(TaskViewModel model)
+        {
+            await taskService.DeleteTask(model);
+
+            return RedirectToAction("All", "Board");
+        }
+
     }
 }
